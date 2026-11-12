@@ -22,6 +22,7 @@ Databricks App mit Lakebase für die Marktleitungen.
    Repository, Berechtigungen *Contents* und *Workflows* (Read and write), Ablauf 90 Tage.
 6. **Token in Databricks hinterlegen:** Settings → Linked accounts → GitHub → Personal access token.
 7. **Git-Folder anlegen:** Workspace → Home → Create → Git folder → Repository-URL eintragen.
+8. **Bundle prüfen:** `databricks bundle validate --target dev --profile redbricks`
 
 > Alle CLI-Befehle in diesem Projekt immer mit `--profile redbricks` ausführen.
 
