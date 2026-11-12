@@ -1,0 +1,9 @@
+bundle:
+  name: redbricks
+  
+targets:
+  dev:
+    mode: development
+    default: true
+    workspace:
+      host: https://dbc-f803e55c-ced8.cloud.databricks.com
