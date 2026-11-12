@@ -1,2 +1,41 @@
-# redbricks-data-platform
-Lakehouse-Plattform für die fiktive Baumarktkette redbricks – Data Products, Declarative Automation Bundles, CI/CD auf Databricks Free Edition
+# redbricks Data Platform
+
+Lakehouse-Plattform für die fiktive Baumarktkette redbricks: Data Products,
+Declarative Automation Bundles und CI/CD auf der Databricks Free Edition.
+Darauf entstehen ein AI/BI-Dashboard für die Vertriebsleitung und eine
+Databricks App mit Lakebase für die Marktleitungen.
+
+## Voraussetzungen
+
+- Databricks Free Edition Workspace
+- GitHub-Account
+- macOS mit Homebrew
+- Databricks CLI ≥ v1.0
+
+## Setup
+
+1. **Repository klonen:** `git clone https://github.com/SchiweMartin/redbricks-data-platform.git`
+2. **Databricks CLI installieren:** über Homebrew (`databricks/tap`), prüfen mit `databricks -v`.
+3. **CLI anmelden (OAuth):** `databricks auth login --host <workspace-url> --profile redbricks`
+4. **Anmeldung prüfen:** `databricks current-user me --profile redbricks`
+5. **GitHub-Token erstellen:** Fine-grained Personal Access Token, nur für dieses
+   Repository, Berechtigungen *Contents* und *Workflows* (Read and write), Ablauf 90 Tage.
+6. **Token in Databricks hinterlegen:** Settings → Linked accounts → GitHub → Personal access token.
+7. **Git-Folder anlegen:** Workspace → Home → Create → Git folder → Repository-URL eintragen.
+
+> Alle CLI-Befehle in diesem Projekt immer mit `--profile redbricks` ausführen.
+
+## Abweichungen wegen Free Edition
+
+- **Git-Integration per PAT statt GitHub App:** Die Free Edition bietet für Git-Folder
+  nur einen Personal Access Token an. Der Token ist auf dieses Repository und die
+  minimal nötigen Rechte beschränkt und läuft nach 90 Tagen ab.
+
+## Dokumentation
+
+- Architekturentscheidungen (ADRs): [`docs/adr/`](docs/adr/)
+
+## Hinweis
+
+redbricks ist ein fiktives Unternehmen. Aufgabenbeschreibung und Testdaten sind
+nicht Teil dieses Repositorys.
