@@ -22,7 +22,9 @@ Databricks App mit Lakebase für die Marktleitungen.
    Repository, Berechtigungen *Contents* und *Workflows* (Read and write), Ablauf 90 Tage.
 6. **Token in Databricks hinterlegen:** Settings → Linked accounts → GitHub → Personal access token.
 7. **Git-Folder anlegen:** Workspace → Home → Create → Git folder → Repository-URL eintragen.
-8. **Bundle prüfen:** `databricks bundle validate --target dev --profile redbricks`
+8. **Catalogs anlegen** (einmalig): jede Anweisung aus `setup/catalogs.sql` ausführen, z. B.
+   `databricks experimental aitools tools query "CREATE CATALOG IF NOT EXISTS redbricks_dev COMMENT '…'" --profile redbricks`
+9. **Bundle prüfen:** `databricks bundle validate --target dev --profile redbricks`
 
 > Alle CLI-Befehle in diesem Projekt immer mit `--profile redbricks` ausführen.
 
@@ -31,6 +33,9 @@ Databricks App mit Lakebase für die Marktleitungen.
 - **Git-Integration per PAT statt GitHub App:** Die Free Edition bietet für Git-Folder
   nur einen Personal Access Token an. Der Token ist auf dieses Repository und die
   minimal nötigen Rechte beschränkt und läuft nach 90 Tagen ab.
+- **Catalogs per SQL statt per Bundle:** Die Free Edition kann Catalogs mit Default
+  Storage nicht über die API anlegen, die das Bundle nutzt. Die Catalogs werden daher mit
+  `setup/catalogs.sql` angelegt, Schemas und Volumes weiterhin per Bundle (siehe ADR 0004).
 
 ## Dokumentation
 

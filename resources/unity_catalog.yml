@@ -1,0 +1,19 @@
+# Catalogs werden per SQL angelegt (Free Edition), siehe setup/catalogs.sql
+
+resources:
+  schemas:
+    eingang:
+      catalog_name: ${var.catalog}
+      name: eingang
+      comment: "Landing Zone: angelieferte Rohdateien der Quellsysteme"
+    betrieb:
+      catalog_name: ${var.catalog}
+      name: betrieb
+      comment: "Technische Betriebsdaten: Lieferprotokoll, Qualitätsmesswerte"
+  volumes:
+    batches:
+      catalog_name: ${var.catalog}
+      schema_name: ${resources.schemas.eingang.name}
+      name: batches
+      volume_type: MANAGED
+      comment: "Angelieferte Batch-Dateien (CSV, JSONL), Ablage durch das Lieferwerkzeug"
