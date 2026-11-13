@@ -1,14 +1,26 @@
 bundle:
   name: redbricks
+  engine: direct
+  
+include:
+    - resources/*.yml
+
+variables:
+  catalog:
+    description: "Unity-Catalog-Catalog der Umgebung"
 
 targets:
   dev:
+    variables:
+      catalog: redbricks_dev
     mode: development
     default: true
     workspace:
       host: https://dbc-f803e55c-ced8.cloud.databricks.com
 
   test:
+    variables:
+      catalog: redbricks_test
     mode: production
     workspace:
       host: https://dbc-f803e55c-ced8.cloud.databricks.com
@@ -18,6 +30,8 @@ targets:
       name_prefix: "[test] "
 
   prod:
+    variables:
+      catalog: redbricks_prod
     mode: production
     workspace:
       host: https://dbc-f803e55c-ced8.cloud.databricks.com
