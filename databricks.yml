@@ -38,3 +38,15 @@ targets:
       root_path: /Workspace/Users/${workspace.current_user.userName}/.bundle/${bundle.name}/${bundle.target}
     presets:
       name_prefix: "[prod] "
+    resources:
+      schemas:
+        eingang:
+          lifecycle:
+            prevent_destroy: true
+        betrieb:
+          lifecycle:
+            prevent_destroy: true
+      volumes:
+        batches:
+          lifecycle:
+            prevent_destroy: true
