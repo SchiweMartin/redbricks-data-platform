@@ -1,4 +1,4 @@
-# Redbricks Data Platform
+# redbricks Data Platform
 
 Lakehouse-Plattform für die fiktive Baumarktkette redbricks: Data Products,
 Declarative Automation Bundles und CI/CD auf der Databricks Free Edition.
@@ -11,6 +11,7 @@ Databricks App mit Lakebase für die Marktleitungen.
 - GitHub-Account
 - macOS mit Homebrew
 - Databricks CLI ≥ v1.0
+- 🆕 uv (Python-Paketverwaltung)
 
 ## Setup
 
@@ -25,6 +26,7 @@ Databricks App mit Lakebase für die Marktleitungen.
 8. **Catalogs anlegen** (einmalig): jede Anweisung aus `setup/catalogs.sql` ausführen, z. B.
    `databricks experimental aitools tools query "CREATE CATALOG IF NOT EXISTS redbricks_dev COMMENT '…'" --profile redbricks`
 9. **Bundle prüfen:** `databricks bundle validate --target dev --profile redbricks`
+10. 🆕 **Python-Umgebung einrichten und prüfen:** `uv sync`, dann `uv run ruff check .` und `uv run pytest`
 
 > Alle CLI-Befehle in diesem Projekt immer mit `--profile redbricks` ausführen.
 
