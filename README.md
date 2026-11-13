@@ -1,4 +1,4 @@
-# redbricks Data Platform
+# Redbricks Data Platform
 
 Lakehouse-Plattform für die fiktive Baumarktkette redbricks: Data Products,
 Declarative Automation Bundles und CI/CD auf der Databricks Free Edition.
