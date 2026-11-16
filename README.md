@@ -11,7 +11,7 @@ Databricks App mit Lakebase für die Marktleitungen.
 - GitHub-Account
 - macOS mit Homebrew
 - Databricks CLI ≥ v1.0
-- 🆕 uv (Python-Paketverwaltung)
+- uv (Python-Paketverwaltung)
 
 ## Setup
 
@@ -26,9 +26,26 @@ Databricks App mit Lakebase für die Marktleitungen.
 8. **Catalogs anlegen** (einmalig): jede Anweisung aus `setup/catalogs.sql` ausführen, z. B.
    `databricks experimental aitools tools query "CREATE CATALOG IF NOT EXISTS redbricks_dev COMMENT '…'" --profile redbricks`
 9. **Bundle prüfen:** `databricks bundle validate --target dev --profile redbricks`
-10. 🆕 **Python-Umgebung einrichten und prüfen:** `uv sync`, dann `uv run ruff check .` und `uv run pytest`
+10. **Python-Umgebung einrichten und prüfen:** `uv sync`, dann `uv run ruff check .` und `uv run pytest`
 
 > Alle CLI-Befehle in diesem Projekt immer mit `--profile redbricks` ausführen.
+
+## 🆕 Batch liefern
+
+Ein Batch wird aus dem lokalen Testdaten-Ordner in die Landing Zone der gewählten
+Umgebung geliefert (im Projektordner ausführen, das Bundle muss deployt sein):
+
+    uv run redbricks-liefern --target dev <pfad>/testdaten/batch_000_initial
+
+- Bereits gelieferte Dateien werden übersprungen, bestehende Dateien nie überschrieben.
+  Ein abgebrochener Batch kann einfach erneut gestartet werden.
+- Jede Datei wird in `<catalog>.<schema betrieb>.lieferprotokoll` protokolliert, z. B.:
+
+      SELECT batch, quelle, count(*) AS dateien, max(geliefert_am) AS geliefert_am
+      FROM redbricks_dev.dev_mschiwe_betrieb.lieferprotokoll
+      GROUP BY batch, quelle
+
+Details: ADR 0006.
 
 ## Abweichungen wegen Free Edition
 
