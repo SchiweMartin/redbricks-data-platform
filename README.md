@@ -58,6 +58,7 @@ Details: ADR 0006.
 
 ## Dokumentation
 
+- Zielarchitektur: [`docs/architektur.md`](docs/architektur.md)
 - Architekturentscheidungen (ADRs): [`docs/adr/`](docs/adr/)
 
 ## Hinweis
