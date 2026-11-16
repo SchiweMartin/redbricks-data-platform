@@ -8,6 +8,10 @@ include:
 variables:
   catalog:
     description: "Unity-Catalog-Catalog der Umgebung"
+  warehouse_id:
+    description: "SQL Warehouse für SQL-Anweisungen (Lieferprotokoll)"
+    lookup:
+      warehouse: "Serverless Starter Warehouse"
 
 targets:
   dev:

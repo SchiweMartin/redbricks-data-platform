@@ -7,7 +7,9 @@ authors = [
     { name = "Martin Schiwe", email = "mschiwe@skeltech.de" }
 ]
 requires-python = ">=3.12,<3.13"
-dependencies = []
+dependencies = [
+    "databricks-sdk>=0.167.0",
+]
 
 [build-system]
 requires = ["uv_build>=0.12.19,<0.13.0"]
@@ -27,3 +29,6 @@ select = ["E", "F", "I", "B", "UP"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+
+[project.scripts] 
+redbricks-liefern = "redbricks.lieferung.cli:main"
