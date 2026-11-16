@@ -1,0 +1,6 @@
+resources:
+  schemas:
+    dp_verkauf:
+      catalog_name: ${var.catalog}
+      name: dp_verkauf
+      comment: "Data Product Verkauf (Owner: Vertrieb): Kassenbons und Tagesabschlüsse, Append-only"
