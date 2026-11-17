@@ -4,3 +4,16 @@ resources:
       catalog_name: ${var.catalog}
       name: dp_verkauf
       comment: "Data Product Verkauf (Owner: Vertrieb): Kassenbons und Tagesabschlüsse, Append-only"
+  pipelines:
+    verkauf:
+      name: verkauf
+      catalog: ${var.catalog}
+      schema: ${resources.schemas.dp_verkauf.name}
+      serverless: true
+      continuous: false
+      root_path: ./transformations
+      libraries: 
+        - glob:
+            include: ./transformations/**
+      configuration:
+        redbricks.landing_pfad: /Volumes/${var.catalog}/${resources.schemas.eingang.name}/${resources.volumes.batches.name}
