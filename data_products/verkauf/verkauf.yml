@@ -17,3 +17,6 @@ resources:
             include: ./transformations/**
       configuration:
         redbricks.landing_pfad: /Volumes/${var.catalog}/${resources.schemas.eingang.name}/${resources.volumes.batches.name}
+      environment:
+        dependencies:
+          - --editable ${workspace.file_path}
