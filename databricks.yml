@@ -4,6 +4,7 @@ bundle:
   
 include:
     - resources/*.yml
+    - data_products/*/*.yml
 
 variables:
   catalog:
