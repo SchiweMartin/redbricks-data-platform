@@ -17,6 +17,8 @@ def bronze_bons():
     return mit_herkunft(
         spark.readStream.format("cloudFiles")
         .option("cloudFiles.format", "json")
+        .option("cloudFiles.inferColumnTypes", "false")
+        .option("cloudFiles.schemaEvolutionMode", "addNewColumns")
         .option("pathGlobFilter", "pos_*.jsonl")
         .load(f"{LANDING}/kasse")
     )
