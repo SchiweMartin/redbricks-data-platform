@@ -17,6 +17,8 @@ def bronze_kassenabschluesse():
     return mit_herkunft(
         spark.readStream.format("cloudFiles")
         .option("cloudFiles.format", "csv")
+        .option("cloudFiles.inferColumnTypes", "false")
+        .option("cloudFiles.schemaEvolutionMode", "addNewColumns")
         .option("header", "true")
         .option("pathGlobFilter", "kassenabschluss_*.csv")
         .load(f"{LANDING}/kasse")
