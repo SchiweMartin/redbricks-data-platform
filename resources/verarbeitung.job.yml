@@ -1,0 +1,21 @@
+
+resources:
+  jobs:
+    verarbeitung:
+      name: "verarbeitung"
+      performance_target: STANDARD
+      max_concurrent_runs: 1
+      queue:
+        enabled: true
+      trigger:
+        file_arrival:
+          url: /Volumes/${var.catalog}/${resources.schemas.eingang.name}/${resources.volumes.batches.name}/
+          min_time_between_triggers_seconds: 120
+          wait_after_last_change_seconds: 120
+      tasks:
+        - task_key: verkauf
+          pipeline_task: 
+            pipeline_id: ${resources.pipelines.verkauf.id}
+            full_refresh: false
+          max_retries: 2
+          min_retry_interval_millis: 120000
