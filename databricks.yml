@@ -22,6 +22,11 @@ targets:
     default: true
     workspace:
       host: https://dbc-f803e55c-ced8.cloud.databricks.com
+    resources:
+      jobs:
+        verarbeitung:
+          trigger:
+            pause_status: UNPAUSED
 
   test:
     variables:
